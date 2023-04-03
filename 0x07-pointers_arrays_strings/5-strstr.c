@@ -12,24 +12,24 @@
 
 char *_strstr(char *haystack, char *needle)
 {
-	unsigned int e = 0, f = 0;
+	int i;
+	int j;
 
-	while (haystack[e])
+	if (needle[0] == '\0')
+		return (haystack);
+
+	for (i = 0; haystack[i] != '\0'; i++)
 	{
-		while (needle[f] && (haystack[e] == needle[0]))
+		if (haystack[i] == needle[0])
 		{
-			if (haystack[e + f] == needle[f])
-				f++;
-			else
-				break;
+			for (j = 0; needle[j] != '\0'; j++)
+			{
+				if (haystack[i + j] != needle[j])
+					break;
+			}
+			if (needle[j] == '\0')
+				return (haystack + i);
 		}
-		if (needle[e])
-		{
-			e++;
-			f = 0;
-		}
-		else
-			return (haystack + e);
 	}
-	return (0);
+	return ('\0');
 }
