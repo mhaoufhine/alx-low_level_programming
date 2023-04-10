@@ -1,19 +1,19 @@
 #include <stdio.h>
-#include "main.h"
 
 /**
- * main -  writes its name
+ * main - prints its name, followed by a new line.
  *
- * @argc: arguement count
+ * @argc: argument count
  *
- * @argv: array of pointers to arguement strings
+ * @argv: arguments
  *
- * Return: Always 0
- **/
+ * Return: 0
+ */
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	argc = argc;
-	printf("%s\n", *argv);
+	(void)argc;
+
+	printf("%s\n", argv[0]);
 	return (0);
 }
