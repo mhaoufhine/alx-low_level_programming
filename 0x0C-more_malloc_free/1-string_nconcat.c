@@ -3,29 +3,48 @@
 #include <stdlib.h>
 
 /**
- * _calloc - allocates memory for an array
+ * string_nconcat - a function that concatenates two strings.
  *
- * @nmemb: allocate memory for array
+ * @s1: first char
  *
- * @size: size of array element
+ * @s2: secound string
  *
- * Return: 0
+ * @n: number of characters with unsigned int
+ *
+ * Return: If the function fails, it should return NULL
  */
-
-void *_calloc(unsigned int nmemb, unsigned int size)
+char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *arr;
-	unsigned int e;
+	unsigned int x, y, z;
+	char *s;
 
-	if (nmemb == 0 || size == 0)
+	if (s1 == NULL)
+	{
+		x = 0;
+	}
+	else
+	{
+		for (x = 0; s1[x]; ++x)
+		;
+	}
+	if (s2 == NULL)
+	{
+		y = 0;
+	}
+	else
+	{
+		for (y = 0; s2[y]; ++y)
+		;
+	}
+	if (y > n)
+		y = n;
+	s = malloc(sizeof(char) * (x + y + 1));
+	if (s == NULL)
 		return (NULL);
-
-	arr = malloc(nmemb * size);
-	if (arr == NULL)
-		return (NULL);
-
-	for (e = 0; e < (nmemb * size); e++)
-		arr[e] = 0;
-
-	return (arr);
+	for (z = 0; z < x; z++)
+		s[z] = s1[z];
+	for (z = 0; z < y; z++)
+		s[z + x] = s2[z];
+	s[x + y] = '\0';
+	return (s);
 }
