@@ -1,28 +1,30 @@
 #include "function_pointers.h"
-#include <stdio.h>
 
 /**
- * array_iterator - prints each array elem on a new line
+ * array_iterator - prints each array elem
  *
- * @array: array
+ * parameter on each element of an array.
  *
- * @size: how many elem to print
+ * @array: array to execute func on
  *
- * @action: pointer to print in regular or hex
+ * @size: is the size of the array to print
  *
- * Return: void	 */
+ * @action:  is a pointer to the function you need to use to print
+ *
+ * Return: void
+ */
 
 void array_iterator(int *array, size_t size, void (*action)(int))
+{
+	size_t i;
+
+	if (array && action)
 	{
-		unsigned int i;
-
-
-		if (array == NULL || action == NULL)
-			return;
-
-
-		for (i = 0; i < size; i++)
+		i = 0;
+		while (i < size)
 		{
 			action(array[i]);
+			i++;
 		}
+	}
 }
